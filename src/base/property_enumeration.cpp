@@ -16,7 +16,7 @@ PropertyEnumeration::PropertyEnumeration(
     )
     : Property(grp, name),
       m_enumeration(enumeration),
-      m_value(enumeration && enumeration->empty() ? enumeration->itemAt(0).value : -1)
+      m_value(enumeration && !enumeration->empty() ? enumeration->itemAt(0).value : -1)
 {
 }
 
