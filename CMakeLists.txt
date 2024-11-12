@@ -692,3 +692,12 @@ add_custom_target(
     src/mayo_version.h.cmake
     README.md
 )
+
+##########
+# Custom steps to be processed, if file ".../cmake/CustomSteps.cmake" exists
+##########
+
+if (EXISTS "${PROJECT_SOURCE_DIR}/cmake/CustomSteps.cmake")
+    message(STATUS "File '${PROJECT_SOURCE_DIR}/cmake/CustomSteps.cmake' found...")
+    include(${PROJECT_SOURCE_DIR}/cmake/CustomSteps.cmake)
+endif()
