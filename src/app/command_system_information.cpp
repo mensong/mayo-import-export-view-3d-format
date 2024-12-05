@@ -352,7 +352,7 @@ QString CommandSystemInformation::data()
              << indentx2 << "useHoverEffects: " << sh->useHoverEffects() << '\n'
              << indentx2 << "wheelScrollLines: " << sh->wheelScrollLines() << '\n'
              << indentx2 << "mouseQuickSelectionThreshold: " << sh->mouseQuickSelectionThreshold() << '\n'
-#if (QT_VERSION >= QT_VERSION_CHECK(5, 14, 0))
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
              << indentx2 << "mouseDoubleClickDistance: " << sh->mouseDoubleClickDistance() << '\n'
              << indentx2 << "touchDoubleTapDistance: " << sh->touchDoubleTapDistance() << '\n'
 #endif

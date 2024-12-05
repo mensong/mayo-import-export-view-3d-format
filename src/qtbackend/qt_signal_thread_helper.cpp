@@ -20,7 +20,12 @@ std::any QtSignalThreadHelper::getCurrentThreadContext()
 
 void QtSignalThreadHelper::execInThread(const std::any& context, const std::function<void()>& fn)
 {
-    QMetaObject::invokeMethod(std::any_cast<QObject*>(context), fn, Qt::ConnectionType::QueuedConnection);
+    auto qobject = std::any_cast<QObject*>(context);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 14, 0)
+    QTimer::singleShot(0, qobject, fn);
+#else
+    QMetaObject::invokeMethod(qobject, fn, Qt::ConnectionType::QueuedConnection);
+#endif
 }
 
 } // namespace Mayo
