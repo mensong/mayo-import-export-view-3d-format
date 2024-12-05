@@ -203,7 +203,9 @@ QPixmap toQPixmap(const Image_PixMap& pixmap)
     auto fnToQImageFormat = [](Image_Format occFormat) {
         switch (occFormat) {
         case Image_Format_RGB:   return QImage::Format_RGB888;
+#if (QT_VERSION>=QT_VERSION_CHECK(5,14,0))
         case Image_Format_BGR:   return QImage::Format_BGR888;
+#endif
         case Image_Format_RGBA:  return QImage::Format_ARGB32;
         case Image_Format_RGBF:  return QImage::Format_RGB444;
         case Image_Format_Gray:  return QImage::Format_Grayscale8;

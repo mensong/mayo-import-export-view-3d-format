@@ -374,7 +374,11 @@ void WidgetMainControl::reloadDocumentAfterChange(const DocumentPtr& doc)
             ;
         const auto msgBtns = QMessageBox::Yes | QMessageBox::No;
         auto msgBox = new QMessageBox(QMessageBox::Question, tr("Question"), strQuestion, msgBtns, this);
+#if (QT_VERSION>=QT_VERSION_CHECK(5,14,0))
         msgBox->setTextFormat(Qt::MarkdownText);
+#else
+        msgBox->setTextFormat(Qt::AutoText);
+#endif
         QtWidgetsUtils::asyncDialogExec(msgBox);
         QObject::connect(msgBox, &QMessageBox::buttonClicked, this, [=](QAbstractButton* btn) {
             m_docFilesWatcher->acknowledgeDocumentFileChange(doc);

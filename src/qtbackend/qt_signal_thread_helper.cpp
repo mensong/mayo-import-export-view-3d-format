@@ -20,7 +20,7 @@ std::any QtSignalThreadHelper::getCurrentThreadContext()
 
 void QtSignalThreadHelper::execInThread(const std::any& context, const std::function<void()>& fn)
 {
-    QTimer::singleShot(0, std::any_cast<QObject*>(context), fn);
+    QMetaObject::invokeMethod(std::any_cast<QObject*>(context), fn, Qt::ConnectionType::QueuedConnection);
 }
 
 } // namespace Mayo
