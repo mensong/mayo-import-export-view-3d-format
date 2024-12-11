@@ -7,6 +7,8 @@
 #pragma once
 
 #include "property.h"
+#include "span.h"
+
 #include <string>
 #include <variant>
 #include <vector>
@@ -16,10 +18,13 @@ namespace Mayo {
 // Mechanism to convert value of a Property object to/from a basic variant type
 class PropertyValueConversion {
 public:
+    using BaseVariantType = std::variant<
+        std::monostate, bool, int, double, std::string, std::vector<uint8_t>
+    >;
     // Variant type to be used when (de)serializing values
-    class Variant : public std::variant<std::monostate, bool, int, double, std::string> {
+    class Variant : public BaseVariantType {
     public:
-        using BaseType = std::variant<std::monostate, bool, int, double, std::string>;
+        using BaseType = BaseVariantType;
         Variant() = default;
         Variant(bool v) : BaseType(v) {}
         Variant(int v) : BaseType(v) {}
@@ -27,21 +32,21 @@ public:
         Variant(double v) : BaseType(v) {}
         Variant(const char* str) : BaseType(std::string(str)) {}
         Variant(const std::string& str) : BaseType(str) {}
+        Variant(Span<const uint8_t> bytes) : BaseType(std::vector<uint8_t>(bytes.begin(), bytes.end())) {}
 
         bool isValid() const;
         bool toBool(bool* ok = nullptr) const;
         int toInt(bool* ok = nullptr) const;
         double toDouble(bool* ok = nullptr) const;
+
         std::string toString(bool* ok = nullptr) const;
         const std::string& toConstRefString(bool* ok = nullptr) const;
 
+        std::vector<uint8_t> toByteArray(bool* ok = nullptr) const;
+        Span<const uint8_t> toConstRefByteArray(bool* ok = nullptr) const;
+
         bool isConvertibleToConstRefString() const;
-
         bool isByteArray() const;
-        void setByteArray(bool on);
-
-    private:
-        bool m_isByteArray = false;
     };
 
     int doubleToStringPrecision() const { return m_doubleToStringPrecision; }

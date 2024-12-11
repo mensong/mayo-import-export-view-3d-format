@@ -16,6 +16,7 @@
 #include "unit_system.h"
 
 #include <fmt/format.h>
+#include <algorithm>
 #if __cpp_lib_to_chars
 #  include <charconv>
 #endif
@@ -346,6 +347,8 @@ std::string PropertyValueConversion::Variant::toString(bool* ok) const
         return std::to_string(std::get<int>(*this));
     else if (std::holds_alternative<double>(*this))
         return std::to_string(std::get<double>(*this));
+    else if (std::holds_alternative<std::vector<uint8_t>>(*this))
+        return std::to_string(std::get<double>(*this));
     else
         return this->toConstRefString();
 }
@@ -366,6 +369,34 @@ const std::string& PropertyValueConversion::Variant::toConstRefString(bool* ok) 
     return CppUtils::nullString();
 }
 
+std::vector<uint8_t> PropertyValueConversion::Variant::toByteArray(bool* ok) const
+{
+    assignBoolPtr(ok, true);
+    if (std::holds_alternative<std::string>(*this)) {
+        const std::string& str = std::get<std::string>(*this);
+        std::vector<uint8_t> bytes;
+        bytes.resize(str.size());
+        std::copy(str.cbegin(), str.cend(), bytes.begin());
+        return bytes;
+    }
+    else if (std::holds_alternative<std::vector<uint8_t>>(*this)) {
+        return std::get<std::vector<uint8_t>>(*this);
+    }
+
+    assignBoolPtr(ok, false);
+    return {};
+}
+
+Span<const uint8_t> PropertyValueConversion::Variant::toConstRefByteArray(bool* ok) const
+{
+    assignBoolPtr(ok, true);
+    if (std::holds_alternative<std::vector<uint8_t>>(*this))
+        return std::get<std::vector<uint8_t>>(*this);
+
+    assignBoolPtr(ok, false);
+    return {};
+}
+
 bool PropertyValueConversion::Variant::isConvertibleToConstRefString() const
 {
     return std::holds_alternative<bool>(*this) || std::holds_alternative<std::string>(*this);
@@ -373,12 +404,7 @@ bool PropertyValueConversion::Variant::isConvertibleToConstRefString() const
 
 bool PropertyValueConversion::Variant::isByteArray() const
 {
-    return m_isByteArray && std::holds_alternative<std::string>(*this);
-}
-
-void PropertyValueConversion::Variant::setByteArray(bool on)
-{
-    m_isByteArray = on;
+    return std::holds_alternative<std::vector<uint8_t>>(*this);
 }
 
 } // namespace Mayo

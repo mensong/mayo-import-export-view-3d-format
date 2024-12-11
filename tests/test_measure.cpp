@@ -12,6 +12,7 @@
 #include "../src/base/unit_system.h"
 #include "../src/io_occ/io_occ_stl.h"
 #include "../src/measure/measure_tool_brep.h"
+#include "../qtcommon/qstring_conv.h"
 
 #include <BRep_Builder.hxx>
 #include <BRepAdaptor_Curve.hxx>
@@ -155,7 +156,7 @@ void TestMeasure::BRepMinDistance_TwoConfusedFaces_test()
         const MeasureDistance minDist = MeasureToolBRep::brepMinDistance(face1, face2);
         QCOMPARE(minDist.value.value(), 0.);
     } catch (const IMeasureError& err) {
-        qDebug() << QString::fromUtf8(err.message().data(), err.message().length());
+        qDebug() << to_QString(err.message());
     }
 }
 

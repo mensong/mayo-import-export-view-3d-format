@@ -166,15 +166,10 @@ Settings::Variant AppModule::toVariant(const Property& prop) const
         QByteArray blob;
         QDataStream stream(&blob, QIODevice::WriteOnly);
         AppModule::writeRecentFiles(stream, filesProp.value());
-        Variant varBlob(blob.toStdString());
-        varBlob.setByteArray(true);
-        return varBlob;
+        return Variant(QtCoreUtils::toStdByteArray(blob));
     }
     else if (isType<PropertyAppUiState>(prop)) {
-        const QByteArray blob = AppUiState::toBlob(constRef<PropertyAppUiState>(prop));
-        Variant varBlob(blob.toStdString());
-        varBlob.setByteArray(true);
-        return varBlob;
+        return Variant(AppUiState::toBlob(constRef<PropertyAppUiState>(prop)));
     }
     else {
         return PropertyValueConversion::toVariant(prop);
@@ -184,7 +179,7 @@ Settings::Variant AppModule::toVariant(const Property& prop) const
 bool AppModule::fromVariant(Property* prop, const Settings::Variant& variant) const
 {
     if (isType<PropertyRecentFiles>(prop)) {
-        const QByteArray blob = QtCoreUtils::QByteArray_frowRawData(variant.toConstRefString());
+        const QByteArray blob = QtCoreUtils::QByteArray_fromRawData(variant.toConstRefByteArray());
         QDataStream stream(blob);
         RecentFiles recentFiles;
         AppModule::readRecentFiles(stream, &recentFiles);
@@ -193,8 +188,7 @@ bool AppModule::fromVariant(Property* prop, const Settings::Variant& variant) co
     }
     else if (isType<PropertyAppUiState>(prop)) {
         bool ok = false;
-        auto blob = QtCoreUtils::QByteArray_frowRawData(variant.toConstRefString());
-        auto uiState = AppUiState::fromBlob(blob, &ok);
+        auto uiState = AppUiState::fromBlob(variant.toConstRefByteArray(), &ok);
         ptr<PropertyAppUiState>(prop)->setValue(uiState);
         return ok;
     }

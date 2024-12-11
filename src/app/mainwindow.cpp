@@ -11,6 +11,7 @@
 #include "../base/global.h"
 #include "../gui/gui_application.h"
 #include "../gui/gui_document.h"
+#include "../qtcommon/qtcore_utils.h"
 #include "app_context.h"
 #include "app_module.h"
 #include "commands_file.h"
@@ -74,8 +75,8 @@ MainWindow::~MainWindow()
 void MainWindow::showEvent(QShowEvent* event)
 {
     const auto& uiState = AppModule::get()->properties()->appUiState.value();
-    if (!uiState.mainWindowGeometry.isEmpty())
-        this->restoreGeometry(uiState.mainWindowGeometry);
+    if (!uiState.mainWindowGeometry.empty())
+        this->restoreGeometry(QtCoreUtils::QByteArray_fromRawData<uint8_t>(uiState.mainWindowGeometry));
 
     WidgetMainControl* pageDocs = this->widgetPageDocuments();
     if (pageDocs) {
@@ -97,7 +98,7 @@ void MainWindow::showEvent(QShowEvent* event)
 void MainWindow::closeEvent(QCloseEvent* event)
 {
     AppUiState uiState = AppModule::get()->properties()->appUiState;
-    uiState.mainWindowGeometry = this->saveGeometry();
+    uiState.mainWindowGeometry = QtCoreUtils::toStdByteArray(this->saveGeometry());
     WidgetMainControl* pageDocs = this->widgetPageDocuments();
     if (pageDocs) {
         uiState.pageDocuments_isLeftSideBarVisible = pageDocs->widgetLeftSideBar()->isVisible();

@@ -8,21 +8,20 @@ namespace Mayo {
 
 template<> const char PropertyAppUiState::TypeName[] = "Mayo::PropertyAppUiState";
 
-QByteArray AppUiState::toBlob(const AppUiState& state)
+std::vector<uint8_t> AppUiState::toBlob(const AppUiState& state)
 {
     QByteArray blob;
     QDataStream stream(&blob, QIODevice::WriteOnly);
-    stream << QtCoreUtils::QByteArray_frowRawData(std::string_view{PropertyAppUiState::TypeName});
+    stream << QtCoreUtils::QByteArray_fromRawData(std::string_view{PropertyAppUiState::TypeName});
     constexpr uint32_t version = 2;
     stream << version;
-    stream << state.mainWindowGeometry;
+    stream << QtCoreUtils::QByteArray_fromRawData<uint8_t>(state.mainWindowGeometry);
     stream << state.pageDocuments_isLeftSideBarVisible;
     stream << state.pageDocuments_widgetLeftSideBarWidthFactor;
-    return blob;
-
+    return QtCoreUtils::toStdByteArray(blob);
 }
 
-AppUiState AppUiState::fromBlob(const QByteArray& blob, bool* ok)
+AppUiState AppUiState::fromBlob(Span<const uint8_t> blob, bool* ok)
 {
     auto fnSetOk = [=](bool v) {
         if (ok)
@@ -31,14 +30,17 @@ AppUiState AppUiState::fromBlob(const QByteArray& blob, bool* ok)
 
     fnSetOk(false);
     AppUiState state;
-    QDataStream stream(blob);
+
+    QDataStream stream(QtCoreUtils::QByteArray_fromRawData(blob));
     QByteArray identifier;
     stream >> identifier;
     if (identifier == PropertyAppUiState::TypeName) {
         uint32_t version = 0;
         stream >> version;
         if (version >= 1) {
-            stream >> state.mainWindowGeometry;
+            QByteArray blobMainWindowGeom;
+            stream >> blobMainWindowGeom;
+            state.mainWindowGeometry = QtCoreUtils::toStdByteArray(blobMainWindowGeom);
             stream >> state.pageDocuments_isLeftSideBarVisible;
             fnSetOk(true);
         }
