@@ -21,6 +21,7 @@
 #include "../src/base/document.h"
 #include "../src/qtcommon/filepath_conv.h"
 #include "../src/qtcommon/qstring_conv.h"
+#include "../src/qtcommon/qtcore_utils.h"
 
 #include <QtCore/QtDebug>
 #include <QtCore/QDataStream>
@@ -267,9 +268,9 @@ void TestApp::AppUiState_test()
 {
     QWidget widget;
     AppUiState uiState;
-    uiState.mainWindowGeometry = widget.saveGeometry();
+    uiState.mainWindowGeometry = QtCoreUtils::toStdByteArray(widget.saveGeometry());
     uiState.pageDocuments_isLeftSideBarVisible = true;
-    QByteArray blobSave = AppUiState::toBlob(uiState);
+    std::vector<uint8_t> blobSave = AppUiState::toBlob(uiState);
 
     bool ok = false;
     const AppUiState uiState_read = AppUiState::fromBlob(blobSave, &ok);

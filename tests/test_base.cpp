@@ -1054,8 +1054,9 @@ void TestBase::Settings_test()
         auto settingsStorage = std::make_unique<TestSettingsStorage>();
         settingsStorage->setValue("main/someInt", Settings::Variant{5});
 
-        Settings::Variant bytesVar("abcde_12345");
-        bytesVar.setByteArray(true);
+        const uint8_t bytes[] = { 97, 98, 99, 100, 101, 95, 49, 50, 51, 52, 53 };
+        const Settings::Variant bytesVar(Span<const uint8_t>(bytes, std::size(bytes)));
+        QVERIFY(std::holds_alternative<std::vector<uint8_t>>(bytesVar));
         settingsStorage->setValue("main/someTestData", bytesVar);
 
         settings.setStorage(std::move(settingsStorage));

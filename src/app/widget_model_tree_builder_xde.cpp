@@ -41,9 +41,9 @@ public:
         // UTF8 rightwards arrow : \xe2\x86\x92
         static const char templateBoth[] = "%instance \xe2\x86\x92 %product";
         switch (format) {
-        case NameFormat::Instance: return QtCoreUtils::QByteArray_frowRawData(templateInstance);
-        case NameFormat::Product: return QtCoreUtils::QByteArray_frowRawData(templateProduct);
-        case NameFormat::Both: return QtCoreUtils::QByteArray_frowRawData(templateBoth);
+        case NameFormat::Instance: return QtCoreUtils::QByteArray_fromRawData(templateInstance);
+        case NameFormat::Product: return QtCoreUtils::QByteArray_fromRawData(templateProduct);
+        case NameFormat::Both: return QtCoreUtils::QByteArray_fromRawData(templateBoth);
         }
         return QByteArray();
     }
@@ -214,7 +214,7 @@ QTreeWidgetItem* WidgetModelTreeBuilder_Xde::buildXdeTree(
 
 QByteArray WidgetModelTreeBuilder_Xde::instanceNameFormat() const
 {
-    return QtCoreUtils::QByteArray_frowRawData(Module::get()->instanceNameFormat.valueName());
+    return QtCoreUtils::QByteArray_fromRawData(Module::get()->instanceNameFormat.valueName());
 }
 
 void WidgetModelTreeBuilder_Xde::setInstanceNameFormat(const QByteArray& format)
