@@ -424,7 +424,7 @@ void GuiDocument::setViewCameraOrientation(V3d_TypeOfOrientation projection)
 {
     this->runViewCameraAnimation([=](OccHandle<V3d_View> view) {
         view->SetProj(projection);
-        view->FitAll(this->graphicsBoundingBox(OnlySelectedGraphics | OnlyVisibleGraphics));
+        GraphicsUtils::V3dView_fitAll(view, this->graphicsBoundingBox(OnlySelectedGraphics | OnlyVisibleGraphics));
     });
 }
 
@@ -566,7 +566,7 @@ void GuiDocument::onDocumentEntityAdded(TreeNodeId entityTreeNodeId)
 {
     this->mapEntity(entityTreeNodeId);
     BndUtils::add(&m_gfxBoundingBox, m_vecGraphicsEntity.back().bndBox);
-    m_v3dView->FitAll(this->graphicsBoundingBox(OnlySelectedGraphics | OnlyVisibleGraphics));
+    GraphicsUtils::V3dView_fitAll(m_v3dView, this->graphicsBoundingBox(OnlySelectedGraphics | OnlyVisibleGraphics));
     this->signalGraphicsBoundingBoxChanged.send(m_gfxBoundingBox);
 }
 

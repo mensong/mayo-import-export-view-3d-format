@@ -124,7 +124,7 @@ WidgetGuiDocument::WidgetGuiDocument(GuiDocument* guiDoc, QWidget* parent)
     QObject::connect(m_btnFitAll, &ButtonFlat::clicked, this, [=]{
         m_guiDoc->runViewCameraAnimation([=](OccHandle<V3d_View> view) {
             auto bndBoxFlags = GuiDocument::OnlySelectedGraphics | GuiDocument::OnlyVisibleGraphics;
-            view->FitAll(this->guiDocument()->graphicsBoundingBox(bndBoxFlags));
+            GraphicsUtils::V3dView_fitAll(view, this->guiDocument()->graphicsBoundingBox(bndBoxFlags));
         });
     });
     QObject::connect(m_btnGrid, &ButtonFlat::checked, this, &WidgetGuiDocument::toggleWidgetGrid);

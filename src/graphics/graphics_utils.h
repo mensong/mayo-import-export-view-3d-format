@@ -36,6 +36,7 @@ struct GraphicsUtils {
     };
 
     static void V3dView_fitAll(const OccHandle<V3d_View>& view);
+    static void V3dView_fitAll(const OccHandle<V3d_View>& view, const Bnd_Box& bndBox);
     static bool V3dView_hasClipPlane(const OccHandle<V3d_View>& view, const OccHandle<Graphic3d_ClipPlane>& plane);
     static gp_Pnt V3dView_to3dPosition(const OccHandle<V3d_View>& view, double x, double y);
 

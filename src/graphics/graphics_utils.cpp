@@ -53,6 +53,11 @@ void GraphicsUtils::V3dView_fitAll(const OccHandle<V3d_View>& view)
     view->FitAll(0.01, false/*dontUpdateView*/);
 }
 
+void GraphicsUtils::V3dView_fitAll(const OccHandle<V3d_View>& view, const Bnd_Box& bndBox)
+{
+    view->FitAll(bndBox, 0.01, false/*dontUpdateView*/);
+}
+
 bool GraphicsUtils::V3dView_hasClipPlane(
         const OccHandle<V3d_View>& view, const OccHandle<Graphic3d_ClipPlane>& plane
     )
