@@ -30,7 +30,7 @@ jobs:
         - name: Install OpenCascade
           run: |
               sudo apt-get -y install libocct-data-exchange-dev libocct-draw-dev occt-misc
-              sudo apt-get -y install libtbb2-dev
+              sudo apt-get -y install libtbb-dev
               sudo apt-get -y install libxi-dev
 
         - name: Install Assimp
