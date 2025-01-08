@@ -58,12 +58,12 @@
 <context>
     <name>Mayo::AppModule</name>
     <message>
-        <location filename="../src/app/app_module.cpp" line="123"/>
+        <location filename="../src/app/app_module.cpp" line="124"/>
         <source>en</source>
         <translation>Anglais</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module.cpp" line="124"/>
+        <location filename="../src/app/app_module.cpp" line="125"/>
         <source>fr</source>
         <translation>Français</translation>
     </message>
@@ -291,22 +291,22 @@ Si actif, la déflection utilisée pour la polygonisation de chaque arête sera 
         <translation>Maillage par défauts</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.cpp" line="126"/>
+        <location filename="../src/app/app_module_properties.cpp" line="129"/>
         <source>import</source>
         <translation>Import</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.cpp" line="143"/>
+        <location filename="../src/app/app_module_properties.cpp" line="146"/>
         <source>export</source>
         <translation>Export</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.cpp" line="167"/>
+        <location filename="../src/app/app_module_properties.cpp" line="170"/>
         <source>Language used for the application. Change will take effect after application restart</source>
         <translation>Langage de l&apos;application. Tout changement sera effectif après redémarrage de l&apos;application</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.cpp" line="171"/>
+        <location filename="../src/app/app_module_properties.cpp" line="174"/>
         <source>Action to be done after some opened document file is changed(modified) externally
 
 Select options `{0}` or `{1}` so the application monitors changes made to opened files
@@ -347,12 +347,12 @@ When such a file change is detected then the application proposes to reload(open
 Quand un tel changement est détecté alors l&apos;application propose de recharger(ouvrir à nouveau) le document</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.cpp" line="180"/>
+        <location filename="../src/app/app_module_properties.cpp" line="183"/>
         <source>In case where multiple documents are opened, make sure the document displayed in the 3D view corresponds to what is selected in the model tree</source>
         <translation>Dans le cas où plusieurs documents sont ouverts, fait en sort que le document affiché dans la vue 2D correspond à ce qui est sélectionné dans l&apos;arborescence du modèle</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.cpp" line="184"/>
+        <location filename="../src/app/app_module_properties.cpp" line="187"/>
         <source>Force usage of the fallback Qt widget to display OpenGL graphics.
 
 When `OFF` the application will try to use OpenGL framebuffer for rendering, this allows to display overlay widgets(eg measure tools panel) with translucid background. However using OpenGL framebuffer might cause troubles for some users(eg empty 3D window) especially on macOS.
@@ -369,17 +369,17 @@ Quand l&apos;option est activée alors l&apos;application utilisera un widget Qt
 Cette option est appliquable seulement avec la version ≥ 7.6 d&apos;OpenCascade. Tout changement sera effectif après redémarrage de l&apos;application</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.cpp" line="198"/>
+        <location filename="../src/app/app_module_properties.cpp" line="201"/>
         <source>Controls precision of the mesh to be computed from the BRep shape</source>
         <translation>Contrôle la précision du maillage calculé à partir de la forme BRep</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.cpp" line="201"/>
+        <location filename="../src/app/app_module_properties.cpp" line="204"/>
         <source>For the tessellation of faces the chordal deflection limits the distance between a curve and its tessellation</source>
         <translation>Pour la tesselation des faces, la déflection chordale limite la distance entre une courbe et sa discrétisation</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.cpp" line="205"/>
+        <location filename="../src/app/app_module_properties.cpp" line="208"/>
         <source>For the tessellation of faces the angular deflection limits the angle between subsequent segments in a polyline</source>
         <translation>Pour la tesselation des faces, la déflection angulaire limite l&apos;angle entre les segments successifs d&apos;une polyligne</translation>
     </message>
@@ -392,7 +392,7 @@ Cette option est appliquable seulement avec la version ≥ 7.6 d&apos;OpenCascad
         <translation type="vanished">Pour la tesselation des faces, la déflection angulaire limite l&apos;angle entre les segments successifs d&apos;une polyligne</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.cpp" line="209"/>
+        <location filename="../src/app/app_module_properties.cpp" line="212"/>
         <source>Relative computation of edge tolerance
 
 If activated, deflection used for the polygonalisation of each edge will be `ChordalDeflection` &amp;#215; `SizeOfEdge`. The deflection used for the faces will be the maximum deflection of their edges.</source>
@@ -401,52 +401,52 @@ If activated, deflection used for the polygonalisation of each edge will be `Cho
 Si actif, la déflection utilisée pour la polygonisation de chaque arête sera de `DéflectionChordale` &amp;#215; `TailleArête`. La déflection utilisée pour les faces sera la déflection maximale de ses arêtes.</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.cpp" line="217"/>
+        <location filename="../src/app/app_module_properties.cpp" line="220"/>
         <source>3D view manipulation shortcuts configuration to mimic other common CAD applications</source>
         <translation>Configuration des raccourcis pour manipuler la vue 3D, permet d&apos;imiter les autres application CAO</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.cpp" line="220"/>
+        <location filename="../src/app/app_module_properties.cpp" line="223"/>
         <source>Angle increment used to turn(rotate) the 3D view around the normal of the view plane(Z axis frame reference)</source>
         <translation>Incrément angulaire utilisé pour tourner la vue 3D autour de la normale au plan de vue (axe Z de référence)</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.cpp" line="225"/>
+        <location filename="../src/app/app_module_properties.cpp" line="228"/>
         <source>Show or hide by default the trihedron centered at world origin. This doesn&apos;t affect 3D view of currently opened documents</source>
         <translation>Montrer/cacher par défaut le trièdre positionné à l&apos;orgine &quot;monde&quot;. N&apos;affecte pas la vue 3D des documents actuellement ouverts</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.cpp" line="229"/>
+        <location filename="../src/app/app_module_properties.cpp" line="232"/>
         <source>Enable capping of currently clipped graphics</source>
         <translation>Activer le bouchage des graphismes actuellement coupés</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.cpp" line="232"/>
+        <location filename="../src/app/app_module_properties.cpp" line="235"/>
         <source>Enable capping hatch texture of currently clipped graphics</source>
         <translation>Activer le hachage texturé pour le bouchage des graphismes actuellement coupés</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.h" line="52"/>
+        <location filename="../src/app/app_module_properties.h" line="53"/>
         <source>decimalCount</source>
         <translation>Nombre de décimales</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.h" line="53"/>
+        <location filename="../src/app/app_module_properties.h" line="54"/>
         <source>schema</source>
         <translation>Schéma</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.h" line="57"/>
+        <location filename="../src/app/app_module_properties.h" line="58"/>
         <source>recentFiles</source>
         <translation>Fichiers récents</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.h" line="58"/>
+        <location filename="../src/app/app_module_properties.h" line="59"/>
         <source>lastOpenFolder</source>
         <translation>Dernier répertoire ouvert</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.h" line="59"/>
+        <location filename="../src/app/app_module_properties.h" line="60"/>
         <source>lastSelectedFormatFilter</source>
         <translation>Dernier filtre de format sélectionné</translation>
     </message>
@@ -455,92 +455,97 @@ Si actif, la déflection utilisée pour la polygonisation de chaque arête sera 
         <translation type="vanished">Recharder les documents lors d&apos;un changement fichier</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.h" line="60"/>
+        <location filename="../src/app/app_module_properties.h" line="61"/>
         <source>actionOnDocumentFileChange</source>
         <translation>Action après modification fichier d&apos;un document</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.h" line="61"/>
+        <location filename="../src/app/app_module_properties.h" line="62"/>
         <source>linkWithDocumentSelector</source>
         <translation>Lier au sélecteur de documents</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.h" line="62"/>
+        <location filename="../src/app/app_module_properties.h" line="63"/>
         <source>forceOpenGlFallbackWidget</source>
         <translation>Forcer usage du widget OpenGL de secours</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.h" line="66"/>
+        <location filename="../src/app/app_module_properties.h" line="64"/>
+        <source>appUiState</source>
+        <translation>État graphique de l&apos;application</translation>
+    </message>
+    <message>
+        <location filename="../src/app/app_module_properties.h" line="68"/>
         <source>meshingQuality</source>
         <translation>Qualité</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.h" line="67"/>
+        <location filename="../src/app/app_module_properties.h" line="69"/>
         <source>meshingChordalDeflection</source>
         <translation>Déflection chordale</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.h" line="68"/>
+        <location filename="../src/app/app_module_properties.h" line="70"/>
         <source>meshingAngularDeflection</source>
         <translation>Déflection angulaire</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.h" line="69"/>
+        <location filename="../src/app/app_module_properties.h" line="71"/>
         <source>meshingRelative</source>
         <translation>Relatif</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.h" line="72"/>
+        <location filename="../src/app/app_module_properties.h" line="74"/>
         <source>navigationStyle</source>
         <translation>Style de navigation de la vue</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.h" line="73"/>
+        <location filename="../src/app/app_module_properties.h" line="75"/>
         <source>defaultShowOriginTrihedron</source>
         <translation>Afficher le trihèdre Origine par défaut</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.h" line="74"/>
+        <location filename="../src/app/app_module_properties.h" line="76"/>
         <source>instantZoomFactor</source>
         <translation>Coefficient du zoom instantané</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.h" line="75"/>
+        <location filename="../src/app/app_module_properties.h" line="77"/>
         <source>turnViewAngleIncrement</source>
         <translation>Incrément de rotation de la vue</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.h" line="77"/>
+        <location filename="../src/app/app_module_properties.h" line="79"/>
         <source>cappingOn</source>
         <translation>Bouchage</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.h" line="78"/>
+        <location filename="../src/app/app_module_properties.h" line="80"/>
         <source>cappingHatchOn</source>
         <translation>Bouchages avec hachures</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.h" line="80"/>
+        <location filename="../src/app/app_module_properties.h" line="82"/>
         <source>color</source>
         <translation>Couleur</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.h" line="81"/>
+        <location filename="../src/app/app_module_properties.h" line="83"/>
         <source>edgeColor</source>
         <translation>Couleur des arêtes</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.h" line="82"/>
+        <location filename="../src/app/app_module_properties.h" line="84"/>
         <source>material</source>
         <translation>Matériau</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.h" line="83"/>
+        <location filename="../src/app/app_module_properties.h" line="85"/>
         <source>showEgesOn</source>
         <translation>Afficher les arêtes</translation>
     </message>
     <message>
-        <location filename="../src/app/app_module_properties.h" line="84"/>
+        <location filename="../src/app/app_module_properties.h" line="86"/>
         <source>showNodesOn</source>
         <translation>Afficher les nœuds</translation>
     </message>
@@ -805,115 +810,115 @@ Si actif, la déflection utilisée pour la polygonisation de chaque arête sera 
         <translation>Durée import: {}ms</translation>
     </message>
     <message>
-        <location filename="../src/app/commands_file.cpp" line="269"/>
+        <location filename="../src/app/commands_file.cpp" line="268"/>
         <source>New</source>
         <translation>Nouveau</translation>
     </message>
     <message>
-        <location filename="../src/app/commands_file.cpp" line="270"/>
+        <location filename="../src/app/commands_file.cpp" line="269"/>
         <source>New Document</source>
         <translation>Nouveau Document</translation>
     </message>
     <message>
-        <location filename="../src/app/commands_file.cpp" line="279"/>
+        <location filename="../src/app/commands_file.cpp" line="278"/>
         <source>Anonymous%1</source>
         <translation>Anonyme%1</translation>
     </message>
     <message>
-        <location filename="../src/app/commands_file.cpp" line="286"/>
+        <location filename="../src/app/commands_file.cpp" line="285"/>
         <source>Open</source>
         <translation>Ouvrir</translation>
     </message>
     <message>
-        <location filename="../src/app/commands_file.cpp" line="287"/>
+        <location filename="../src/app/commands_file.cpp" line="286"/>
         <source>Open Documents</source>
         <translation>Ouvrir des documents</translation>
     </message>
     <message>
-        <location filename="../src/app/commands_file.cpp" line="337"/>
+        <location filename="../src/app/commands_file.cpp" line="336"/>
         <source>Recent files</source>
         <translation>Fichiers récents</translation>
     </message>
     <message>
-        <location filename="../src/app/commands_file.cpp" line="366"/>
+        <location filename="../src/app/commands_file.cpp" line="365"/>
         <source>%1 | %2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../src/app/commands_file.cpp" line="374"/>
+        <location filename="../src/app/commands_file.cpp" line="373"/>
         <source>Clear menu</source>
         <translation>Vider le menu</translation>
     </message>
     <message>
         <location filename="../src/app/commands_file.cpp" line="250"/>
-        <location filename="../src/app/commands_file.cpp" line="387"/>
+        <location filename="../src/app/commands_file.cpp" line="386"/>
         <source>Import</source>
         <translation>Importer</translation>
     </message>
     <message>
-        <location filename="../src/app/commands_file.cpp" line="388"/>
+        <location filename="../src/app/commands_file.cpp" line="387"/>
         <source>Import in current document</source>
         <translation>Importer dans le document courant</translation>
     </message>
     <message>
+        <location filename="../src/app/commands_file.cpp" line="417"/>
         <location filename="../src/app/commands_file.cpp" line="418"/>
-        <location filename="../src/app/commands_file.cpp" line="419"/>
         <source>Export selected items</source>
         <translation>Exporter les éléments sélectionnées</translation>
     </message>
     <message>
-        <location filename="../src/app/commands_file.cpp" line="428"/>
+        <location filename="../src/app/commands_file.cpp" line="427"/>
         <source>No item selected for export</source>
         <translation>Aucun élément sélectionné pour l&apos;export</translation>
     </message>
     <message>
-        <location filename="../src/app/commands_file.cpp" line="440"/>
+        <location filename="../src/app/commands_file.cpp" line="439"/>
         <source>Select Output File</source>
         <translation>Sélection fichier de sortie</translation>
     </message>
     <message>
-        <location filename="../src/app/commands_file.cpp" line="463"/>
+        <location filename="../src/app/commands_file.cpp" line="462"/>
         <source>Export time: {}ms</source>
         <translation>Durée export: {}ms</translation>
     </message>
     <message>
-        <location filename="../src/app/commands_file.cpp" line="480"/>
+        <location filename="../src/app/commands_file.cpp" line="479"/>
         <source>Close &quot;%1&quot;</source>
         <translation>Fermer &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../src/app/commands_file.cpp" line="514"/>
+        <location filename="../src/app/commands_file.cpp" line="513"/>
         <source>Close %1</source>
         <translation>Fermer %1</translation>
     </message>
     <message>
-        <location filename="../src/app/commands_file.cpp" line="515"/>
+        <location filename="../src/app/commands_file.cpp" line="514"/>
         <source>Close</source>
         <translation>Fermer</translation>
     </message>
     <message>
-        <location filename="../src/app/commands_file.cpp" line="524"/>
+        <location filename="../src/app/commands_file.cpp" line="523"/>
         <source>Close all</source>
         <translation>Tout fermer</translation>
     </message>
     <message>
-        <location filename="../src/app/commands_file.cpp" line="525"/>
+        <location filename="../src/app/commands_file.cpp" line="524"/>
         <source>Close all documents</source>
         <translation>Fermer tous les documents</translation>
     </message>
     <message>
-        <location filename="../src/app/commands_file.cpp" line="545"/>
-        <location filename="../src/app/commands_file.cpp" line="586"/>
+        <location filename="../src/app/commands_file.cpp" line="544"/>
+        <location filename="../src/app/commands_file.cpp" line="585"/>
         <source>Close all except current</source>
         <translation>Tout fermer sauf document courant</translation>
     </message>
     <message>
-        <location filename="../src/app/commands_file.cpp" line="546"/>
+        <location filename="../src/app/commands_file.cpp" line="545"/>
         <source>Close all except current document</source>
         <translation>Tout fermer sauf document courant</translation>
     </message>
     <message>
-        <location filename="../src/app/commands_file.cpp" line="585"/>
+        <location filename="../src/app/commands_file.cpp" line="584"/>
         <source>Close all except %1</source>
         <translation>Tout fermer sauf %1</translation>
     </message>
@@ -922,7 +927,7 @@ Si actif, la déflection utilisée pour la polygonisation de chaque arête sera 
         <translation type="vanished">Tout fermer sauf &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../src/app/commands_file.cpp" line="594"/>
+        <location filename="../src/app/commands_file.cpp" line="593"/>
         <source>Quit</source>
         <translation>Quitter</translation>
     </message>
@@ -2491,7 +2496,7 @@ It can be disabled in order to minimize the size of the resulting file.</source>
     <message>
         <location filename="../src/io_off/io_off_reader.cpp" line="263"/>
         <source>Inconsistent vertex count of face</source>
-        <translation type="unfinished"></translation>
+        <translation>Le nombre de sommets dans la facette est incohérent</translation>
     </message>
 </context>
 <context>
@@ -2505,32 +2510,39 @@ It can be disabled in order to minimize the size of the resulting file.</source>
 <context>
     <name>Mayo::IO::PlyWriterI18N</name>
     <message>
+        <location filename="../src/io_ply/io_ply_writer.cpp" line="68"/>
         <source>Line that will appear in header</source>
-        <translation type="vanished">Texte qui apparaîtra dans l&apos;en-tête</translation>
+        <translation>Texte qui apparaîtra dans l&apos;en-tête</translation>
     </message>
     <message>
+        <location filename="../src/io_ply/io_ply_writer.cpp" line="79"/>
         <source>targetFormat</source>
-        <translation type="vanished">Format cible</translation>
+        <translation>Format cible</translation>
     </message>
     <message>
+        <location filename="../src/io_ply/io_ply_writer.cpp" line="80"/>
         <source>writeColors</source>
-        <translation type="vanished">Écrire la couleur des sommets</translation>
+        <translation>Écrire la couleur des sommets</translation>
     </message>
     <message>
+        <location filename="../src/io_ply/io_ply_writer.cpp" line="81"/>
         <source>defaultColor</source>
-        <translation type="vanished">Couleur par défaut</translation>
+        <translation>Couleur par défaut</translation>
     </message>
     <message>
+        <location filename="../src/io_ply/io_ply_writer.cpp" line="82"/>
         <source>comment</source>
-        <translation type="vanished">Commentaire</translation>
+        <translation>Commentaire</translation>
     </message>
     <message>
+        <location filename="../src/io_ply/io_ply_writer.cpp" line="140"/>
         <source>Failed to open file</source>
-        <translation type="vanished">Impossible d&apos;ouvrir le fichier</translation>
+        <translation>Impossible d&apos;ouvrir le fichier</translation>
     </message>
     <message>
+        <location filename="../src/io_ply/io_ply_writer.cpp" line="153"/>
         <source>Unknown host endianness</source>
-        <translation type="vanished">Boutisme du CPU inconnu</translation>
+        <translation>Boutisme du CPU inconnu</translation>
     </message>
     <message>
         <source>Json</source>
@@ -2803,17 +2815,17 @@ It can be disabled in order to minimize the size of the resulting file.</source>
     <message>
         <location filename="../src/cli/main.cpp" line="447"/>
         <source>Settings cache written to %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Les paramètres sauvegardés ont été écrits dans %1</translation>
     </message>
     <message>
         <location filename="../src/cli/main.cpp" line="486"/>
         <source>Settings &apos;%1&apos; cached</source>
-        <translation type="unfinished"></translation>
+        <translation>Les paramètres dans &apos;%1&apos; sont sauvegardés</translation>
     </message>
     <message>
         <location filename="../src/cli/main.cpp" line="489"/>
         <source>No supplied settings to cache</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucun paramètre à sauvegarder</translation>
     </message>
     <message>
         <source>Mesh BRep shapes</source>
@@ -3032,13 +3044,13 @@ It can be disabled in order to minimize the size of the resulting file.</source>
         <translation type="vanished">Selectionner fichier pièce</translation>
     </message>
     <message>
-        <location filename="../src/app/mainwindow.cpp" line="260"/>
+        <location filename="../src/app/mainwindow.cpp" line="285"/>
         <source>Warning</source>
         <translation>Avertissement</translation>
     </message>
     <message>
-        <location filename="../src/app/mainwindow.cpp" line="210"/>
-        <location filename="../src/app/mainwindow.cpp" line="263"/>
+        <location filename="../src/app/mainwindow.cpp" line="235"/>
+        <location filename="../src/app/mainwindow.cpp" line="288"/>
         <source>Error</source>
         <translation>Erreur</translation>
     </message>
@@ -3605,42 +3617,42 @@ Modifié le: %3 {1
         <translation>Mesures</translation>
     </message>
     <message>
-        <location filename="../src/app/widget_gui_document.cpp" line="342"/>
+        <location filename="../src/app/widget_gui_document.cpp" line="330"/>
         <source>Isometric</source>
         <translation>Isométrique</translation>
     </message>
     <message>
-        <location filename="../src/app/widget_gui_document.cpp" line="343"/>
+        <location filename="../src/app/widget_gui_document.cpp" line="331"/>
         <source>Back</source>
         <translation>Arrière</translation>
     </message>
     <message>
-        <location filename="../src/app/widget_gui_document.cpp" line="344"/>
+        <location filename="../src/app/widget_gui_document.cpp" line="332"/>
         <source>Front</source>
         <translation>Devant</translation>
     </message>
     <message>
-        <location filename="../src/app/widget_gui_document.cpp" line="345"/>
+        <location filename="../src/app/widget_gui_document.cpp" line="333"/>
         <source>Left</source>
         <translation>Gauche</translation>
     </message>
     <message>
-        <location filename="../src/app/widget_gui_document.cpp" line="346"/>
+        <location filename="../src/app/widget_gui_document.cpp" line="334"/>
         <source>Right</source>
         <translation>Droit</translation>
     </message>
     <message>
-        <location filename="../src/app/widget_gui_document.cpp" line="347"/>
+        <location filename="../src/app/widget_gui_document.cpp" line="335"/>
         <source>Top</source>
         <translation>Haut</translation>
     </message>
     <message>
-        <location filename="../src/app/widget_gui_document.cpp" line="348"/>
+        <location filename="../src/app/widget_gui_document.cpp" line="336"/>
         <source>Bottom</source>
         <translation>Bas</translation>
     </message>
     <message>
-        <location filename="../src/app/widget_gui_document.cpp" line="358"/>
+        <location filename="../src/app/widget_gui_document.cpp" line="346"/>
         <source>&lt;b&gt;Left-click&lt;/b&gt;: popup menu of pre-defined views
 &lt;b&gt;CTRL+Left-click&lt;/b&gt;: apply &apos;%1&apos; view</source>
         <translation>&lt;b&gt;Click gauche&lt;/b&gt; : menu déroulant des vues pré-définies
@@ -3768,34 +3780,38 @@ Lu: %5
         <translation>Z=</translation>
     </message>
     <message>
-        <location filename="../src/app/widget_main_control.cpp" line="246"/>
-        <location filename="../src/app/widget_main_control.cpp" line="253"/>
+        <location filename="../src/app/widget_main_control.cpp" line="264"/>
+        <location filename="../src/app/widget_main_control.cpp" line="271"/>
         <source>Data</source>
         <translation>Données</translation>
     </message>
     <message>
-        <location filename="../src/app/widget_main_control.cpp" line="267"/>
+        <location filename="../src/app/widget_main_control.cpp" line="285"/>
         <source>Graphics</source>
         <translation>Graphismes</translation>
     </message>
     <message>
-        <location filename="../src/app/widget_main_control.cpp" line="300"/>
+        <location filename="../src/app/widget_main_control.cpp" line="318"/>
         <source>Options</source>
         <translation>Options</translation>
     </message>
     <message>
-        <location filename="../src/app/widget_main_control.cpp" line="351"/>
+        <location filename="../src/app/widget_main_control.cpp" line="369"/>
         <source>Document file `%1` has been changed since it was opened
 
 Do you want to reload that document?
 
 File: `%2`</source>
-        <translation type="unfinished"></translation>
+        <translation>Le document `%1`a été modifié depuis son ouverture
+
+Voulez-vous recharger ce document ?
+
+Fichier : `%2`</translation>
     </message>
     <message>
-        <location filename="../src/app/widget_main_control.cpp" line="358"/>
+        <location filename="../src/app/widget_main_control.cpp" line="376"/>
         <source>Question</source>
-        <translation type="unfinished"></translation>
+        <translation>Question</translation>
     </message>
 </context>
 <context>
@@ -4268,12 +4284,12 @@ File: `%2`</source>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="46"/>
         <source>Solid</source>
-        <translation type="unfinished"></translation>
+        <translation>Solide</translation>
     </message>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="47"/>
         <source>Horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="48"/>
@@ -4283,7 +4299,7 @@ File: `%2`</source>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="49"/>
         <source>Vertical</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="50"/>
@@ -4293,7 +4309,7 @@ File: `%2`</source>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="51"/>
         <source>Diagonal45</source>
-        <translation type="unfinished"></translation>
+        <translation>Diagonal 45°</translation>
     </message>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="52"/>
@@ -4303,7 +4319,7 @@ File: `%2`</source>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="53"/>
         <source>Diagonal135</source>
-        <translation type="unfinished"></translation>
+        <translation>Diagonal 135°</translation>
     </message>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="54"/>
@@ -4313,7 +4329,7 @@ File: `%2`</source>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="55"/>
         <source>Grid</source>
-        <translation type="unfinished"></translation>
+        <translation>Grille</translation>
     </message>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="56"/>
@@ -4323,7 +4339,7 @@ File: `%2`</source>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="57"/>
         <source>GridDiagonal</source>
-        <translation type="unfinished"></translation>
+        <translation>Grille en diagonal</translation>
     </message>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="58"/>
@@ -4336,102 +4352,102 @@ File: `%2`</source>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="19"/>
         <source>Brass</source>
-        <translation type="unfinished"></translation>
+        <translation>Laiton</translation>
     </message>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="20"/>
         <source>Bronze</source>
-        <translation type="unfinished"></translation>
+        <translation>Bronze</translation>
     </message>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="21"/>
         <source>Copper</source>
-        <translation type="unfinished"></translation>
+        <translation>Cuivre</translation>
     </message>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="22"/>
         <source>Gold</source>
-        <translation type="unfinished"></translation>
+        <translation>Or</translation>
     </message>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="23"/>
         <source>Pewter</source>
-        <translation type="unfinished"></translation>
+        <translation>Étain</translation>
     </message>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="24"/>
         <source>Plaster</source>
-        <translation type="unfinished"></translation>
+        <translation>Plâtre</translation>
     </message>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="25"/>
         <source>Plastic</source>
-        <translation type="unfinished"></translation>
+        <translation>Plastique</translation>
     </message>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="26"/>
         <source>Silver</source>
-        <translation type="unfinished"></translation>
+        <translation>Argent</translation>
     </message>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="27"/>
         <source>Steel</source>
-        <translation type="unfinished"></translation>
+        <translation>Acier</translation>
     </message>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="28"/>
         <source>Stone</source>
-        <translation type="unfinished"></translation>
+        <translation>Pierre</translation>
     </message>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="29"/>
         <source>ShinyPlastic</source>
-        <translation type="unfinished"></translation>
+        <translation>Plastique brillant</translation>
     </message>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="30"/>
         <source>Satin</source>
-        <translation type="unfinished"></translation>
+        <translation>Satin</translation>
     </message>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="31"/>
         <source>Metalized</source>
-        <translation type="unfinished"></translation>
+        <translation>Métallisé</translation>
     </message>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="32"/>
         <source>NeonGnc</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="33"/>
         <source>Chrome</source>
-        <translation type="unfinished"></translation>
+        <translation>Chrome</translation>
     </message>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="34"/>
         <source>Aluminium</source>
-        <translation type="unfinished"></translation>
+        <translation>Aluminium</translation>
     </message>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="35"/>
         <source>Obsidian</source>
-        <translation type="unfinished"></translation>
+        <translation>Obsidienne</translation>
     </message>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="36"/>
         <source>NeonPhc</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="37"/>
         <source>Jade</source>
-        <translation type="unfinished"></translation>
+        <translation>Jade</translation>
     </message>
     <message>
         <location filename="../src/base/occt_enums.cpp" line="38"/>
         <source>Default</source>
-        <translation type="unfinished"></translation>
+        <translation>Défaut</translation>
     </message>
 </context>
 <context>
