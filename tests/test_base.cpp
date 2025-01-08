@@ -350,48 +350,53 @@ void TestBase::OccHandle_test()
     }
 }
 
-void TestBase::PropertyValueConversionVariant_doubleToInt_test()
+void TestBase::PropertyValueConversionVariant_toInt_test()
 {
     using Variant = PropertyValueConversion::Variant;
-    QFETCH(double, doubleValue);
+    QFETCH(Variant, variant);
+    QFETCH(int, toInt);
     QFETCH(bool, ok);
 
-    const Variant dvar(doubleValue);
     bool okActual = false;
-    const int asIntValue = dvar.toInt(&okActual);
-    if (ok) {
-        QCOMPARE(asIntValue, std::floor(doubleValue));
-    } else {
-        QCOMPARE(asIntValue, 0);
-    }
-
+    QCOMPARE(variant.toInt(&okActual), toInt);
     QCOMPARE(okActual, ok);
 }
 
-void TestBase::PropertyValueConversionVariant_doubleToInt_test_data()
+void TestBase::PropertyValueConversionVariant_toInt_test_data()
 {
-    QTest::addColumn<double>("doubleValue");
+    using Variant = PropertyValueConversion::Variant;
+    QTest::addColumn<Variant>("variant");
+    QTest::addColumn<int>("toInt");
     QTest::addColumn<bool>("ok");
-    QTest::newRow("50.25") << 50.25 << true;
-    QTest::newRow("-50.25") << -50.25 << true;
-    QTest::newRow("INT_MAX+1") << (double(INT_MAX) + 1.) << false;
-    QTest::newRow("INT_MIN-1") << (double(INT_MIN) - 1.) << false;
-    QTest::newRow("INT_MAX") << double(INT_MAX) << true;
-    QTest::newRow("INT_MIN") << double(INT_MIN) << true;
+
+    QTest::newRow("false") << Variant{false} << 0 << false;
+    QTest::newRow("true") << Variant{true} << 0 << false;
+    QTest::newRow("50.25") << Variant{50.25} << int(std::floor(50.25)) << true;
+    QTest::newRow("-50.25") << Variant{-50.25} << int(std::floor(-50.25)) << true;
+    QTest::newRow("INT_MAX+1") << Variant{double(INT_MAX) + 1.} << 0 << false;
+    QTest::newRow("INT_MIN-1") << Variant{double(INT_MIN) - 1.} << 0 << false;
+    QTest::newRow("INT_MAX") << Variant{double(INT_MAX)} << INT_MAX << true;
+    QTest::newRow("INT_MIN") << Variant{double(INT_MIN)} << INT_MIN << true;
+    QTest::newRow("'58'") << Variant{"58"} << 58 << true;
+    QTest::newRow("'4.57'") << Variant{"4.57"} << int(std::floor(4.57)) << true;
+    QTest::newRow("'non_int_str'") << Variant{"non_int_str"} << 0 << false;
+
+    const uint8_t bytes[] = { 52, 55 }; // ascii: {'4', '7'}
+    QTest::newRow("bytes") << Variant{Span<const uint8_t>(bytes)} << 47 << true;
 }
 
 void TestBase::PropertyValueConversionVariant_toString_test()
 {
-    QFETCH(PropertyValueConversion::Variant, variantValue);
+    QFETCH(PropertyValueConversion::Variant, variant);
     QFETCH(std::string, toString);
 
     bool ok = false;
-    if (std::holds_alternative<double>(variantValue)) {
-        const std::string str = variantValue.toString(&ok);
+    if (std::holds_alternative<double>(variant)) {
+        const std::string str = variant.toString(&ok);
         QCOMPARE(std::stod(str), std::stod(toString));
     }
     else {
-        QCOMPARE(variantValue.toString(&ok), toString);
+        QCOMPARE(variant.toString(&ok), toString);
     }
 
     QVERIFY(ok);
@@ -400,18 +405,18 @@ void TestBase::PropertyValueConversionVariant_toString_test()
 void TestBase::PropertyValueConversionVariant_toString_test_data()
 {
     using Variant = PropertyValueConversion::Variant;
-    QTest::addColumn<Variant>("variantValue");
+    QTest::addColumn<Variant>("variant");
     QTest::addColumn<std::string>("toString");
 
-    QTest::newRow("Variant{false}") << Variant{false} << std::string{"false"};
-    QTest::newRow("Variant{true}") << Variant{true} << std::string{"true"};
-    QTest::newRow("Variant{57}") << Variant{57} << std::string{"57"};
-    QTest::newRow("Variant{4.57f}") << Variant{4.57f} << std::string{"4.57"};
-    QTest::newRow("Variant{1.25}") << Variant{1.25} << std::string{"1.25"};
-    QTest::newRow("Variant{'some string'}") << Variant{"some string"} << std::string{"some string"};
+    QTest::newRow("false") << Variant{false} << std::string{"false"};
+    QTest::newRow("true") << Variant{true} << std::string{"true"};
+    QTest::newRow("57") << Variant{57} << std::string{"57"};
+    QTest::newRow("4.57f") << Variant{4.57f} << std::string{"4.57"};
+    QTest::newRow("1.25") << Variant{1.25} << std::string{"1.25"};
+    QTest::newRow("'some string'") << Variant{"some string"} << std::string{"some string"};
 
-    const uint8_t bytes[] = { 48, 65 }; // ascii: 0A
-    QTest::newRow("Variant{bytes}") << Variant{Span<const uint8_t>(bytes)} << std::string{"0A"};
+    const uint8_t bytes[] = { 48, 65 }; // ascii: {'0', 'A'}
+    QTest::newRow("bytes") << Variant{Span<const uint8_t>(bytes)} << std::string{"0A"};
 }
 
 void TestBase::PropertyValueConversion_test()

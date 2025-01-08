@@ -348,7 +348,18 @@ int PropertyValueConversion::Variant::toInt(bool* ok) const
             return static_cast<int>(dval);
     }
     else if (std::holds_alternative<std::string>(*this)) {
-        return std::stoi(std::get<std::string>(*this));
+        try {
+            return std::stoi(std::get<std::string>(*this));
+        }
+        catch (const std::exception&) {
+        }
+    }
+    else if (std::holds_alternative<std::vector<uint8_t>>(*this)) {
+        try {
+            return std::stoi(this->toString(ok));
+        }
+        catch (const std::exception&) {
+        }
     }
 
     assignBoolPtr(ok, false);
