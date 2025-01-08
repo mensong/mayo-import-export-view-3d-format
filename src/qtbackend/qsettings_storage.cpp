@@ -26,7 +26,7 @@ Settings::Variant QSettingsStorage::value(std::string_view key) const
     const QVariant value = m_storage.value(to_QString(key));
     switch (value.type()) {
     case QVariant::ByteArray: {
-        Span<const uint8_t> bytes = QtCoreUtils::toStdByteArray(value.toByteArray());
+        auto bytes = QtCoreUtils::toStdByteArray(value.toByteArray());
         return Settings::Variant(bytes);
     }
     case QVariant::String: {
