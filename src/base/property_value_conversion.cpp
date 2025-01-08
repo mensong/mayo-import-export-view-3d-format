@@ -372,14 +372,19 @@ double PropertyValueConversion::Variant::toDouble(bool* ok) const
 std::string PropertyValueConversion::Variant::toString(bool* ok) const
 {
     assignBoolPtr(ok, true);
-    if (std::holds_alternative<int>(*this))
+    if (std::holds_alternative<int>(*this)) {
         return std::to_string(std::get<int>(*this));
-    else if (std::holds_alternative<double>(*this))
+    }
+    else if (std::holds_alternative<double>(*this)) {
         return std::to_string(std::get<double>(*this));
-    else if (std::holds_alternative<std::vector<uint8_t>>(*this))
-        return std::to_string(std::get<double>(*this));
-    else
+    }
+    else if (std::holds_alternative<std::vector<uint8_t>>(*this)) {
+        const auto bytes = this->toConstRefByteArray(ok);
+        return std::string{ bytes.begin(), bytes.end() };
+    }
+    else {
         return this->toConstRefString();
+    }
 }
 
 const std::string& PropertyValueConversion::Variant::toConstRefString(bool* ok) const

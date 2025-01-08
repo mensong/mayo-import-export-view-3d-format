@@ -31,6 +31,9 @@ private slots:
     void PropertyValueConversionVariant_doubleToInt_test();
     void PropertyValueConversionVariant_doubleToInt_test_data();
 
+    void PropertyValueConversionVariant_toString_test();
+    void PropertyValueConversionVariant_toString_test_data();
+
     void PropertyValueConversion_test();
     void PropertyValueConversion_test_data();
     void PropertyValueConversion_bugGitHub219_test();
