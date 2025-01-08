@@ -26,13 +26,13 @@ public:
     public:
         using BaseType = BaseVariantType;
         Variant() = default;
-        Variant(bool v) : BaseType(v) {}
-        Variant(int v) : BaseType(v) {}
-        Variant(float v) : Variant(static_cast<double>(v)) {}
-        Variant(double v) : BaseType(v) {}
-        Variant(const char* str) : BaseType(std::string(str)) {}
-        Variant(const std::string& str) : BaseType(str) {}
-        Variant(Span<const uint8_t> bytes) : BaseType(std::vector<uint8_t>(bytes.begin(), bytes.end())) {}
+        Variant(bool v);
+        Variant(int v);
+        Variant(float v);
+        Variant(double v);
+        Variant(const char* str);
+        Variant(const std::string& str);
+        Variant(Span<const uint8_t> bytes);
 
         bool isValid() const;
         bool toBool(bool* ok = nullptr) const;
