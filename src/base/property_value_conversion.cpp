@@ -91,11 +91,11 @@ static gp_XYZ xyzFromString(std::string_view str)
 } // namespace
 
 PropertyValueConversion::Variant::Variant(bool v)
-    : BaseType(v)
+    : BaseVariantType(v)
 {}
 
 PropertyValueConversion::Variant::Variant(int v)
-    : BaseType(v)
+    : BaseVariantType(v)
 {}
 
 PropertyValueConversion::Variant::Variant(float v)
@@ -103,21 +103,20 @@ PropertyValueConversion::Variant::Variant(float v)
 {}
 
 PropertyValueConversion::Variant::Variant(double v)
-    : BaseType(v)
+    : BaseVariantType(v)
 {}
 
 PropertyValueConversion::Variant::Variant(const char* str)
-    : BaseType(std::string(str))
+    : BaseVariantType(std::string(str))
 {}
 
 PropertyValueConversion::Variant::Variant(const std::string& str)
-    : BaseType(str)
+    : BaseVariantType(str)
 {}
 
 PropertyValueConversion::Variant::Variant(Span<const uint8_t> bytes)
-    : BaseType(std::vector<uint8_t>(bytes.begin(), bytes.end()))
+    : BaseVariantType(std::vector<uint8_t>(bytes.begin(), bytes.end()))
 {}
-
 
 PropertyValueConversion::Variant PropertyValueConversion::toVariant(const Property& prop) const
 {
