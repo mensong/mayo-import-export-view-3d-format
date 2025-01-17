@@ -56,6 +56,7 @@
 #include <QtWidgets/QApplication>
 
 #include <fmt/format.h>
+#include <gsl/util>
 #include <cstdlib>
 #include <fstream>
 #include <iostream>
@@ -376,6 +377,7 @@ static int runApp(QCoreApplication* qtApp)
 
     // Initialize Gui application
     auto guiApp = new GuiApplication(app);
+    auto _ = gsl::finally([=]{ delete guiApp; });
     initGui(guiApp);
 
     // Register providers to query document tree node properties
