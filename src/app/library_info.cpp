@@ -21,16 +21,12 @@ std::vector<LibraryInfo>& getLibraryInfos()
 } // namespace
 
 void LibraryInfoArray::add(
-    std::string_view libName,
-    std::string_view version,
-    std::string_view versionDetails
+        std::string_view libName, std::string_view version, std::string_view versionDetails
     )
 {
     if (!libName.empty() && !version.empty()) {
         const LibraryInfo libInfo{
-            std::string(libName),
-            std::string(version),
-            std::string(versionDetails)
+            std::string{libName}, std::string{version}, std::string{versionDetails}
         };
         getLibraryInfos().push_back(std::move(libInfo));
     }

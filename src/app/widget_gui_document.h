@@ -18,11 +18,11 @@ namespace Mayo {
 
 class ButtonFlat;
 class GuiDocument;
+class IWidgetOccView;
 class WidgetClipPlanes;
 class WidgetExplodeAssembly;
 class WidgetGrid;
 class WidgetMeasure;
-class IWidgetOccView;
 
 class WidgetGuiDocument : public QWidget {
     Q_OBJECT

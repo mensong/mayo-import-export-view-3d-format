@@ -21,9 +21,7 @@ struct LibraryInfo {
 
 struct LibraryInfoArray {
     static void add(
-        std::string_view libName,
-        std::string_view version,
-        std::string_view versionDetails = ""
+        std::string_view libName, std::string_view version, std::string_view versionDetails = ""
     );
 
     static Span<const LibraryInfo> get();

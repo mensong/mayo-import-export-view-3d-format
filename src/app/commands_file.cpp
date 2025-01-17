@@ -118,17 +118,17 @@ struct OpenFileNames {
         QString* dlgPtrSelFilter = &result.lastIoSettings.selectedFilter;
         if (option == OpenFileNames::GetOne) {
             const QString strFilepath =
-                    QFileDialog::getOpenFileName(
-                        parentWidget, dlgTitle, dlgOpenDir, dlgFilter, dlgPtrSelFilter
-                    );
+                QFileDialog::getOpenFileName(
+                    parentWidget, dlgTitle, dlgOpenDir, dlgFilter, dlgPtrSelFilter
+                );
             result.listFilepath.clear();
             result.listFilepath.push_back(filepathFrom(strFilepath));
         }
         else {
             const QStringList listStrFilePath =
-                    QFileDialog::getOpenFileNames(
-                        parentWidget, dlgTitle, dlgOpenDir, dlgFilter, dlgPtrSelFilter
-                    );
+                QFileDialog::getOpenFileNames(
+                    parentWidget, dlgTitle, dlgOpenDir, dlgFilter, dlgPtrSelFilter
+                );
             result.listFilepath.clear();
             for (const QString& strFilePath : listStrFilePath)
                 result.listFilepath.push_back(filepathFrom(strFilePath));
@@ -137,9 +137,10 @@ struct OpenFileNames {
         if (!result.listFilepath.empty()) {
             result.lastIoSettings.openDir = result.listFilepath.front();
             result.selectedFormat =
-                    result.lastIoSettings.selectedFilter != allFilesFilter ?
-                        formatFromFilter(result.lastIoSettings.selectedFilter) :
-                        IO::Format_Unknown;
+                result.lastIoSettings.selectedFilter != allFilesFilter ?
+                    formatFromFilter(result.lastIoSettings.selectedFilter) :
+                    IO::Format_Unknown
+                ;
             ImportExportSettings::save(result.lastIoSettings);
         }
 
@@ -188,7 +189,7 @@ void FileCommandTools::openDocumentsFromList(IAppContext* context, Span<const Fi
                 QElapsedTimer chrono;
                 chrono.start();
                 const bool okImport =
-                        appModule->ioSystem()->importInDocument()
+                    appModule->ioSystem()->importInDocument()
                         .targetDocument(app->findDocumentByIdentifier(newDocId))
                         .withFilepath(fp)
                         .withParametersProvider(appModule)
@@ -199,7 +200,7 @@ void FileCommandTools::openDocumentsFromList(IAppContext* context, Span<const Fi
                         .withEntityPostProcessInfoProgress(20, Command::textIdTr("Mesh BRep shapes"))
                         .withMessenger(appModule)
                         .withTaskProgress(progress)
-                        .execute();
+                    .execute();
                 if (okImport)
                     appModule->emitInfo(fmt::format(Command::textIdTr("Import time: {}ms"), chrono.elapsed()));
             });
@@ -230,18 +231,19 @@ void FileCommandTools::importInDocument(
         chrono.start();
 
         auto doc = appModule->application()->findDocumentByIdentifier(targetDocId);
-        const bool okImport = appModule->ioSystem()->importInDocument()
-                                  .targetDocument(doc)
-                                  .withFilepaths(listFilePaths)
-                                  .withParametersProvider(appModule)
-                                  .withEntityPostProcess([=](TDF_Label labelEntity, TaskProgress* progress) {
-                                      appModule->computeBRepMesh(labelEntity, progress);
-                                  })
-                                  .withEntityPostProcessRequiredIf(&IO::formatProvidesBRep)
-                                  .withEntityPostProcessInfoProgress(20, Command::textIdTr("Mesh BRep shapes"))
-                                  .withMessenger(appModule)
-                                  .withTaskProgress(progress)
-                                  .execute();
+        const bool okImport =
+            appModule->ioSystem()->importInDocument()
+                .targetDocument(doc)
+                .withFilepaths(listFilePaths)
+                .withParametersProvider(appModule)
+                .withEntityPostProcess([=](TDF_Label labelEntity, TaskProgress* progress) {
+                    appModule->computeBRepMesh(labelEntity, progress);
+                })
+                .withEntityPostProcessRequiredIf(&IO::formatProvidesBRep)
+                .withEntityPostProcessInfoProgress(20, Command::textIdTr("Mesh BRep shapes"))
+                .withMessenger(appModule)
+                .withTaskProgress(progress)
+            .execute();
         if (okImport)
             appModule->emitInfo(fmt::format(Command::textIdTr("Import time: {}ms"), chrono.elapsed()));
     });
@@ -340,10 +342,7 @@ CommandRecentFiles::CommandRecentFiles(IAppContext* context)
 CommandRecentFiles::CommandRecentFiles(IAppContext* context, QMenu* containerMenu)
     : CommandRecentFiles(context)
 {
-    QObject::connect(
-                containerMenu, &QMenu::aboutToShow,
-                this, &CommandRecentFiles::recreateEntries
-    );
+    QObject::connect(containerMenu, &QMenu::aboutToShow, this, &CommandRecentFiles::recreateEntries);
 }
 
 void CommandRecentFiles::execute()
@@ -434,13 +433,13 @@ void CommandExportSelectedApplicationItems::execute()
 
     auto lastSettings = ImportExportSettings::load();
     const QString strFilepath =
-            QFileDialog::getSaveFileName(
-                this->widgetMain(),
-                Command::tr("Select Output File"),
-                filepathTo<QString>(lastSettings.openDir),
-                listWriterFileFilter.join(QLatin1String(";;")),
-                &lastSettings.selectedFilter
-            );
+        QFileDialog::getSaveFileName(
+            this->widgetMain(),
+            Command::tr("Select Output File"),
+            filepathTo<QString>(lastSettings.openDir),
+            listWriterFileFilter.join(QLatin1String(";;")),
+            &lastSettings.selectedFilter
+        );
     if (strFilepath.isEmpty())
         return;
 
@@ -450,14 +449,14 @@ void CommandExportSelectedApplicationItems::execute()
         QElapsedTimer chrono;
         chrono.start();
         const bool okExport =
-                appModule->ioSystem()->exportApplicationItems()
+            appModule->ioSystem()->exportApplicationItems()
                 .targetFile(filepathFrom(strFilepath))
                 .targetFormat(format)
                 .withItems(this->guiApp()->selectionModel()->selectedItems())
                 .withParameters(appModule->findWriterParameters(format))
                 .withMessenger(appModule)
                 .withTaskProgress(progress)
-                .execute();
+            .execute();
         if (okExport)
             appModule->emitInfo(fmt::format(Command::textIdTr("Export time: {}ms"), chrono.elapsed()));
     });
@@ -483,8 +482,8 @@ CommandCloseCurrentDocument::CommandCloseCurrentDocument(IAppContext* context)
     this->setAction(action);
 
     QObject::connect(
-                context, &IAppContext::currentDocumentChanged,
-                this, &CommandCloseCurrentDocument::updateActionText
+        context, &IAppContext::currentDocumentChanged,
+        this, &CommandCloseCurrentDocument::updateActionText
     );
     this->app()->signalDocumentNameChanged.connectSlot([=](const DocumentPtr& doc) {
         if (this->currentDocument() == doc->identifier())
@@ -509,9 +508,10 @@ void CommandCloseCurrentDocument::updateActionText(Document::Identifier docId)
     DocumentPtr docPtr = this->app()->findDocumentByIdentifier(docId);
     const QString docName = to_QString(docPtr ? docPtr->name() : std::string{});
     const QString textActionClose =
-            docPtr ?
-                Command::tr("Close %1").arg(strFilepathQuoted(docName)) :
-                Command::tr("Close");
+        docPtr ?
+            Command::tr("Close %1").arg(strFilepathQuoted(docName)) :
+            Command::tr("Close")
+        ;
     this->action()->setText(textActionClose);
     this->action()->setToolTip(textActionClose);
 }
@@ -580,9 +580,10 @@ void CommandCloseAllDocumentsExceptCurrent::updateActionText(Document::Identifie
     DocumentPtr docPtr = this->app()->findDocumentByIdentifier(docId);
     const QString docName = to_QString(docPtr ? docPtr->name() : std::string{});
     const QString textActionClose =
-            docPtr ?
-                Command::tr("Close all except %1").arg(strFilepathQuoted(docName)) :
-                Command::tr("Close all except current");
+        docPtr ?
+            Command::tr("Close all except %1").arg(strFilepathQuoted(docName)) :
+            Command::tr("Close all except current")
+        ;
     this->action()->setText(textActionClose);
 }
 
