@@ -354,6 +354,13 @@ static int runApp(QCoreApplication* qtApp)
     auto appModule = AppModule::get();
     appModule->settings()->setStorage(std::make_unique<QSettingsStorage>());
     appModule->setRecentFileThumbnailRecorder(&createGuiDocumentThumbnail);
+    appModule->addLibraryInfo(
+        IO::AssimpLib::strName(), IO::AssimpLib::strVersion(), IO::AssimpLib::strVersionDetails()
+    );
+    appModule->addLibraryInfo(
+        IO::GmioLib::strName(), IO::GmioLib::strVersion(), IO::GmioLib::strVersionDetails()
+    );
+
     {
         // Load translation files
         auto fnLoadQmFile = [=](const QString& qmFilePath) {
@@ -400,14 +407,6 @@ static int runApp(QCoreApplication* qtApp)
     IO::addPredefinedFormatProbes(ioSystem);
     appModule->properties()->IO_bindParameters(ioSystem);
     appModule->properties()->retranslate();
-
-    // Register library infos
-    LibraryInfoArray::add(
-        IO::AssimpLib::strName(), IO::AssimpLib::strVersion(), IO::AssimpLib::strVersionDetails()
-    );
-    LibraryInfoArray::add(
-        IO::GmioLib::strName(), IO::GmioLib::strVersion(), IO::GmioLib::strVersionDetails()
-    );
 
     // Process CLI
     if (args.showSystemInformation) {

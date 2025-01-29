@@ -6,25 +6,18 @@
 
 #pragma once
 
-#include "../base/span.h"
-
 #include <string>
-#include <string_view>
 
 namespace Mayo {
 
+// Provides information about a 3rd-party library used by the application
 struct LibraryInfo {
+    // Precise name of the library
     std::string name;
+    // Version string, can be codenamed and/or semantic
     std::string version;
+    // Addition details about the version, such as compilation flags
     std::string versionDetails;
-};
-
-struct LibraryInfoArray {
-    static void add(
-        std::string_view libName, std::string_view version, std::string_view versionDetails = ""
-    );
-
-    static Span<const LibraryInfo> get();
 };
 
 } // namespace Mayo

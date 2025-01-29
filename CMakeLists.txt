@@ -648,7 +648,6 @@ list(
     ${PROJECT_SOURCE_DIR}/src/app/app_module_properties.cpp
     ${PROJECT_SOURCE_DIR}/src/app/app_module.cpp
     ${PROJECT_SOURCE_DIR}/src/app/app_ui_state.cpp
-    ${PROJECT_SOURCE_DIR}/src/app/library_info.cpp
     ${PROJECT_SOURCE_DIR}/src/app/recent_files.cpp
 )
 

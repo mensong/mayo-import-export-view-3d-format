@@ -145,7 +145,7 @@ void showSystemInformation(std::ostream& ostr)
     ostr << '\n' << "OpenCascade: " << OCC_VERSION_STRING_EXT << " (build)" << '\n';
 
     // Other registered libraries
-    for (const LibraryInfo& libInfo : LibraryInfoArray::get()) {
+    for (const LibraryInfo& libInfo : AppModule::get()->libraryInfoArray()) {
         ostr << '\n' << libInfo.name << ": " << libInfo.version
              << " " << libInfo.versionDetails
              << '\n';
@@ -406,6 +406,12 @@ static int runApp(QCoreApplication* qtApp)
 
     // Initialize Base application
     auto app = appModule->application();
+    appModule->addLibraryInfo(
+        IO::AssimpLib::strName(), IO::AssimpLib::strVersion(), IO::AssimpLib::strVersionDetails()
+    );
+    appModule->addLibraryInfo(
+        IO::GmioLib::strName(), IO::GmioLib::strVersion(), IO::GmioLib::strVersionDetails()
+    );
     TextId::addTranslatorFunction(&qtAppTranslate); // Set Qt i18n backend
 #ifdef MAYO_OS_WINDOWS
     initOpenCascadeEnvironment("opencascade.conf");
@@ -447,14 +453,6 @@ static int runApp(QCoreApplication* qtApp)
         qInfo().noquote() << Main::tr("Settings cache written to %1").arg(strFilepathSettings);
         return 0;
     }
-
-    // Register library infos
-    LibraryInfoArray::add(
-        IO::AssimpLib::strName(), IO::AssimpLib::strVersion(), IO::AssimpLib::strVersionDetails()
-    );
-    LibraryInfoArray::add(
-        IO::GmioLib::strName(), IO::GmioLib::strVersion(), IO::GmioLib::strVersionDetails()
-    );
 
     // Process CLI
      if (args.showSystemInformation) {

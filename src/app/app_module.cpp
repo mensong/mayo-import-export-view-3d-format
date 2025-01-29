@@ -142,6 +142,27 @@ QString AppModule::languageCode() const
     return QString::fromUtf8(langDefault.data(), CppUtils::safeStaticCast<int>(langDefault.size()));
 }
 
+void AppModule::addLibraryInfo(const LibraryInfo& lib)
+{
+    if (!lib.name.empty() && !lib.version.empty())
+        m_vecLibraryInfo.push_back(lib);
+}
+
+void AppModule::addLibraryInfo(
+        std::string_view libName, std::string_view version, std::string_view versionDetails
+    )
+{
+    const LibraryInfo libInfo{
+        std::string{libName}, std::string{version}, std::string{versionDetails}
+    };
+    this->addLibraryInfo(libInfo);
+}
+
+Span<const LibraryInfo> AppModule::libraryInfoArray() const
+{
+    return m_vecLibraryInfo;
+}
+
 bool AppModule::excludeSettingPredicate(const Property& prop)
 {
     return !prop.isUserVisible();
