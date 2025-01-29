@@ -208,7 +208,7 @@ QString CommandSystemInformation::data()
     ostr << '\n' << "OpenCascade: " << OCC_VERSION_STRING_EXT << " (build)" << '\n';
 
     // Other registered libraries
-    for (const auto& libInfo : LibraryInfoArray::get()) {
+    for (const LibraryInfo& libInfo : AppModule::get()->libraryInfoArray()) {
         ostr << '\n' << libInfo.name << ": " << libInfo.version << " " << libInfo.versionDetails << '\n';
     }
 

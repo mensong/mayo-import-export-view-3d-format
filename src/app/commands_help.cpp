@@ -6,6 +6,7 @@
 
 #include "commands_help.h"
 
+#include "app_module.h"
 #include "dialog_about.h"
 #include "library_info.h"
 #include "qtwidgets_utils.h"
@@ -42,7 +43,7 @@ CommandAbout::CommandAbout(IAppContext* context)
 void CommandAbout::execute()
 {
     auto dlg = new DialogAbout(this->widgetMain());
-    for (const auto& libInfo : LibraryInfoArray::get())
+    for (const LibraryInfo& libInfo : AppModule::get()->libraryInfoArray())
         dlg->addLibraryInfo(libInfo.name, libInfo.version);
 
     QtWidgetsUtils::asyncDialogExec(dlg);

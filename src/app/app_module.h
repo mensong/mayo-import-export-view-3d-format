@@ -7,6 +7,7 @@
 #pragma once
 
 #include "app_module_properties.h"
+#include "library_info.h"
 #include "qstring_utils.h"
 
 #include "../base/application.h"
@@ -78,6 +79,11 @@ public:
     // Short-name of the current language in use(eg. en=english)
     QString languageCode() const;
 
+    // Information about 3rd-party libraries used by the application
+    void addLibraryInfo(const LibraryInfo& lib);
+    void addLibraryInfo(std::string_view libName, std::string_view version, std::string_view versionDetails = "");
+    Span<const LibraryInfo> libraryInfoArray() const;
+
     // Logging
     void clearMessageLog();
     Span<const Message> messageLog() const { return m_messageLog; }
@@ -135,6 +141,7 @@ private:
     QLocale m_qtLocale;
     std::vector<std::unique_ptr<DocumentTreeNodePropertiesProvider>> m_vecDocTreeNodePropsProvider;
     std::function<Thumbnail(GuiDocument*, QSize)> m_fnRecentFileThumbnailRecorder;
+    std::vector<LibraryInfo> m_vecLibraryInfo;
 };
 
 } // namespace Mayo
