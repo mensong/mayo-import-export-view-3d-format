@@ -50,7 +50,7 @@ private:
     void onGuiDocumentAdded(GuiDocument* guiDoc);
     void onGuiDocumentErased(GuiDocument* guiDoc);
 
-    void onMessage(MessageType msgType, const QString& text);
+    void onMessage(const Messenger::Message& msg);
 
     void updateControlsActivation();
     void updateCurrentPage();

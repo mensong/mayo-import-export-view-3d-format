@@ -11,6 +11,7 @@
 #include "../base/global.h"
 #include "../gui/gui_application.h"
 #include "../gui/gui_document.h"
+#include "../qtcommon/qstring_conv.h"
 #include "../qtcommon/qtcore_utils.h"
 #include "app_context.h"
 #include "app_module.h"
@@ -272,20 +273,21 @@ void MainWindow::onGuiDocumentErased(GuiDocument* /*guiDoc*/)
     this->updateControlsActivation();
 }
 
-void MainWindow::onMessage(MessageType msgType, const QString& text)
+void MainWindow::onMessage(const Messenger::Message& msg)
 {
-    switch (msgType) {
+    const auto qtext = to_QString(msg.text);
+    switch (msg.type) {
     case MessageType::Trace:
-        qDebug() << text;
+        qDebug() << qtext;
         break;
     case MessageType::Info:
-        WidgetMessageIndicator::showInfo(text, this);
+        WidgetMessageIndicator::showInfo(qtext, this);
         break;
     case MessageType::Warning:
-        QtWidgetsUtils::asyncMsgBoxWarning(this, tr("Warning"), text);
+        QtWidgetsUtils::asyncMsgBoxWarning(this, tr("Warning"), qtext);
         break;
     case MessageType::Error:
-        QtWidgetsUtils::asyncMsgBoxCritical(this, tr("Error"), text);
+        QtWidgetsUtils::asyncMsgBoxCritical(this, tr("Error"), qtext);
         break;
     }
 }

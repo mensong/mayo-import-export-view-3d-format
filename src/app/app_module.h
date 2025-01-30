@@ -44,12 +44,6 @@ class AppModule :
 {
     MAYO_DECLARE_TEXT_ID_FUNCTIONS(Mayo::AppModule)
 public:
-    // Loggable message
-    struct Message {
-        MessageType type;
-        QString text;
-    };
-
     // Query singleton instance
     static AppModule* get();
 
@@ -87,7 +81,7 @@ public:
     // Logging
     void clearMessageLog();
     Span<const Message> messageLog() const { return m_messageLog; }
-    Signal<MessageType, QString> signalMessage;
+    Signal<const Messenger::Message&> signalMessage;
     Signal<> signalMessageLogCleared;
 
     // Recent files
@@ -135,7 +129,7 @@ private:
     Settings* m_settings = nullptr;
     IO::System m_ioSystem;
     AppModuleProperties m_props;
-    std::vector<Message> m_messageLog;
+    std::vector<Messenger::Message> m_messageLog;
     std::mutex m_mutexMessageLog;
     std::locale m_stdLocale;
     QLocale m_qtLocale;
