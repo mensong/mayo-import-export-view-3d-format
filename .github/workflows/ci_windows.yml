@@ -1,9 +1,9 @@
-name: Windows
+name: Windows x64
 
 on: [push]
 
 jobs:
-    build-windows-msvc:
+    build-windows:
         strategy:
             matrix:
                 include:

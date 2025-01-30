@@ -1,4 +1,5 @@
-name: macOS
+#name: macOS x64/arm64
+name: macOS arm64
 
 on: [push]
 
@@ -6,16 +7,19 @@ jobs:
     build-macos:
         strategy:
             matrix:
-                include:
-                    - qt_version_name: 5.15
-                      qt_version_major: 5
-                    - qt_version_name: 6.7
-                      qt_version_major: 6
+                qt_version_major: [5, 6]
+                os: [macos-latest]
+                #os: [macos-latest-large, macos-latest-xlarge]
 
-        runs-on: macos-latest
-        name: build-macos-qt${{matrix.qt_version_name}}
+        runs-on: ${{matrix.os}}
+        name: build-${{matrix.os}}-qt${{matrix.qt_version_major}}
 
         steps:
+        - name: Set globals
+          id: globals
+          run: |
+              echo qt_path=$(brew --prefix qt@${{matrix.qt_version_major}}) >> ${GITHUB_OUTPUT}
+
         - name: Checkout
           uses: actions/checkout@v2
 
@@ -40,7 +44,7 @@ jobs:
               cmake .. \
                     -DMayo_BuildTests=ON \
                     -DMayo_BuildPluginAssimp=ON \
-                    -DQT_DIR=$(brew --prefix qt@${{matrix.qt_version_major}})/lib/cmake/Qt${{matrix.qt_version_major}}
+                    -DQT_DIR=${{steps.globals.outputs.qt_path}}/lib/cmake/Qt${{matrix.qt_version_major}}
               cmake --build . \
                     --config Release \
                     --parallel ${{steps.cpu-cores.outputs.count}}
