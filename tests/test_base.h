@@ -26,6 +26,11 @@ private slots:
 
     void FilePath_test();
 
+    void MessageCollecter_ignoreSingleMessageType_test();
+    void MessageCollecter_ignoreSingleMessageType_test_data();
+    void MessageCollecter_only_test();
+    void MessageCollecter_only_test_data();
+
     void OccHandle_test();
 
     void PropertyValueConversionVariant_toInt_test();
