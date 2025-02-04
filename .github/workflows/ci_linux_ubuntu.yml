@@ -1,31 +1,32 @@
-name: Linux
+name: Linux Ubuntu x64/arm64
 
 on: [push]
 
 jobs:
-    build-linux:
+    build-ubuntu:
         strategy:
             matrix:
-                qt_version: [5.15.2, 6.5.2]
+                qt_version_major: [5, 6]
+                os: [ubuntu-latest, ubuntu-24.04-arm]
 
-        runs-on: ubuntu-latest
-        name: build-linux-qt${{matrix.qt_version}}
+        runs-on: ${{matrix.os}}
+        name: build-${{matrix.os}}-qt${{matrix.qt_version_major}}
 
         steps:
         - name: Checkout
           uses: actions/checkout@v2
 
-        - name: Install Qt
-          uses: jurplel/install-qt-action@v3
-          with:
-              version: ${{matrix.qt_version}}
-              cache: true
-              cache-key-prefix: QtCache
-
-        # Actually needed for Qt6
-        - name: Install dependencies for "xcb" Qt plugin
+        - name: Update all package informations
           run: |
-              sudo apt-get -y install libxcb-cursor0
+              sudo apt-get -y update
+
+        - name: Install Qt${{matrix.qt_version_major}}
+          run: |
+              if [[ ${{matrix.qt_version_major}} == "5" ]]; then
+                  sudo apt-get -y install qtbase5-dev libqt5svg5-dev
+              elif [[ ${{matrix.qt_version_major}} == "6" ]]; then
+                  sudo apt-get -y install qt6-base-dev qt6-svg-dev libxcb-cursor0
+              fi
 
         - name: Install OpenCascade
           run: |

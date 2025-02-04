@@ -1,11 +1,11 @@
-name: macOS-conda
+name: macOS-conda arm64
 
 on: [push]
 
 jobs:
-    build-macos:
+    build-macos-conda:
         runs-on: macos-latest
-        name: build-macos-qt${{matrix.qt_version_name}}
+        name: build-macos-qt5
 
         steps:
         - name: Checkout
